@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(29, 27, 27);
+}
+
+a {
+    text-decoration: none;    
+    color: rgb(231, 224, 224);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/*----- Navbar -------*/
+nav {
+    /*display: none;*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+}
+
+.menu {
+    top: 8vh;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    right: -100%;
+}
+
+.show {
+    right: 0;
+}
+
+.hamburger {
+    cursor: pointer;
+    position: relative;
+}
+
+.hamburger span {  
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: rgb(231, 224, 224);
+    margin: 3px;
+    border-radius: 6px;
+    transition: 0.4s;
+}
+
+.hamburger.is_active span:nth-child(1){
+    transform: translate(-5px, 6px) rotate(-45deg);
+}
+.hamburger.is_active span:nth-child(2){
+    opacity: 0;
+    transform: translateX(15px);
+}
+.hamburger.is_active span:nth-child(3){
+    transform: translate(-5px, -6px) rotate(45deg);
+}
+
+.show a:nth-of-type(odd) {
+    color: rgb(121, 118, 118);
+}
+/*----- Navbar -------*/
+
+
+.introduction {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.personal_data {
+    color: rgb(197, 221, 241);
+    padding: 3rem;
+    order: 2;
+}
+.photo {
+    width: 50vh;
+    height: auto;
+    border-radius: 50%;
+    padding: 3rem;
+    order: 1;
+}
+
+@media (min-width: 950px) {
+    .hamburger {
+        display: none;
+    }
+    .menu {
+        display: flex;
+        position: relative;
+        background-color: rgb(29, 27, 27);
+        width: 50%;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 8vh;
+        top: 0vh;
+        padding-top: 0px;
+        right: 0;
+    }
+    .introduction {
+        flex-direction: row;
+    }
+    .personal_data {
+        order: 1;
+    }
+}
+
