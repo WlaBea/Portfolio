@@ -138,20 +138,6 @@ nav {
     padding: 3rem;
 }
 
-.overlay {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, 0);
-    width: 50vh;
-    height: 50vh;
-    background-color: rgb(58, 58, 58);
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-}
-
 .contactForm {
     display: flex;
     flex-direction: column;
@@ -173,6 +159,18 @@ nav {
 
 .contact .icons {
     margin-top: 1rem;
+}
+
+
+
+/*---------thanks.html-----------*/
+.thanks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.thanks h1, .thanks a, .thanks p {
+    margin: 1rem;
 }
 
 @media (min-width: 950px) {
