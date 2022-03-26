@@ -2,16 +2,33 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(29, 27, 27);
-    color: rgb(231, 224, 224);
+    scroll-padding-top: 9vh;
+    color: rgb(255, 255, 255);
+    color: rgb(0,0,0);
 }
 
+body {
+    background-color: #6884d8;
+    background-image: linear-gradient(180deg, #6884d8 25%, #8EC5FC 71%);
+    background: #eacda3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #d6ae7b, #eacda3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #d6ae7b, #eacda3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
 
 a {
     text-decoration: none;    
     color: rgb(231, 224, 224);
     font-weight: bold;
     text-transform: uppercase;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    border-bottom: 2px solid rgb(255, 194, 194);
+    background-color: rgb(56, 55, 55);
+    z-index: 2;
 }
 
 /*----- Navbar -------*/
@@ -21,20 +38,22 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
+    background-color: rgb(56, 55, 55);
 }
 
 .menu {
-    top: 8vh;
+    top: 7vh;
     position: fixed;
     width: 100%;
-    height: 100vh;
-    z-index: 100;
+    height: 93vh;
+    z-index: 1;
     transition: 0.5s;
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
     align-items: center;
     right: -100%;
+    background-color: inherit;
 }
 
 .menu a {
@@ -76,17 +95,17 @@ nav {
 .show a:nth-of-type(odd) {
     color: rgb(121, 118, 118);
 }
-/*----- Navbar -------*/
+/*-----end Navbar -------*/
 
-
+/*-----About -------*/
 .introduction {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    padding-top: 3vh;
 }
 .personal_data {
-    color: rgb(197, 221, 241);
     padding: 3rem;
     order: 2;
 }
@@ -97,43 +116,97 @@ nav {
     padding: 3rem;
     order: 1;
 }
+/*-----end About -------*/
 
+.titleP {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/*-----Projects -------*/
 .projects {
-    padding: 3rem;
+    padding: 0 3rem;
 }
-
-.project {
-    padding: 1rem;
+.project{
     display: flex;
-    border: 1px solid rgb(139, 172, 241);
-    margin-top: 0.75rem;
-    justify-content: space-around;
-    flex-direction: column;
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 1;
+    margin: 1rem 0;
+    padding-top: 0.75rem;
+}
+.project .circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.project:hover {
+    min-height: auto;
+}
+.project .circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    clip-path: circle(120px at center);
+    transition: 0.5s;
+}
+.project:hover .circle::before {
+    clip-path: circle(100% at center);
+}
+.project img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 300px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.project:hover img {
+    top: 80%;
+    height: 25%;
+}
+.project .projectDescription {
+    position: relative;
+    width: 100%;
+    left: 20%;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.project:hover .projectDescription {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    padding-bottom: 25%;
 }
 
-.projectDescription {
-    padding-right: 1.5rem;
-    margin-bottom: 10px;
-}
-.projectDescription h1 {
-    padding-bottom: 10px;
-}
-
-.projectShow {
-    margin: 0.5rem;
-}
-
-.projectPhoto {
-    width: 30vh;
-    margin-bottom: 3px;
-}
 
 .icons i {
     cursor: pointer;
     font-size: 1.5rem;
-    padding-right: 5px;
+    padding: 5px;
 }
+.projectDescription {
+    padding: 1.5rem;
+    padding-top: 0;
+}
+.projectDescription h1 {
+    padding-bottom: 10px;
+}
+/*-----end Projects -------*/
 
+/*-----Contact -------*/
 .contact {
     padding: 3rem;
 }
@@ -159,8 +232,9 @@ nav {
 
 .contact .icons {
     margin-top: 1rem;
+    font-size: 2rem;
 }
-
+/*-----end Contant -------*/
 
 
 /*---------thanks.html-----------*/
@@ -173,6 +247,13 @@ nav {
     margin: 1rem;
 }
 
+@media (max-width: 400px) { 
+    .project:hover img {
+        top: 85%;
+        height: 25%;
+    }
+}
+
 @media (min-width: 950px) {
     .hamburger {
         display: none;
@@ -180,7 +261,6 @@ nav {
     .menu {
         display: flex;
         position: relative;
-        background-color: rgb(29, 27, 27);
         width: 50%;
         flex-direction: row;
         justify-content: space-around;
@@ -196,10 +276,21 @@ nav {
         order: 1;
     }
     .project {
-        flex-direction: row;
+        align-items: center;
+        flex-direction: row;       
+        height: 350px;
     }
-    .projectDescription {
+    .project .projectDescription {
         margin-bottom: 0;
+        width: 50%;
+    }
+    .project:hover img {
+        left: 75%;
+        top: 50%;
+        height: 90%;
+    }   
+    .project:hover .projectDescription {
+        padding-bottom: 0;
     }
     .contactForm {
         margin-top: 0.75rem;
